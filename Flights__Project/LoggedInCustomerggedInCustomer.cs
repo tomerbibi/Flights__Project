@@ -19,14 +19,14 @@ namespace Flights__Project
                         t.CustimerID = 0;
                         _ticketDAOPGSQL.Update(t);
                     }
-                });
+                }); 
             }
         }
 
         public List<Flight> GetAllMyFlights(LoginToken<Customer> token)
         {
-            List<Flight> f = new List<Flight>();
-
+            List<Flight> f = new List<Flight>(); 
+             
             _ticketDAOPGSQL.GetAll().ForEach(ticket =>
             {
                 if (ticket.CustimerID == token.User.Id)
