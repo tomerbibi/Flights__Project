@@ -50,7 +50,7 @@ namespace Flights__Project
                     t = ticket;
                     t.CustimerID = token.User.Id;
                     _ticketDAOPGSQL.Update(t);
-                }
+                } 
             });
             if(t is null) 
                 Console.WriteLine("sorry we are out of tickets for this flight");

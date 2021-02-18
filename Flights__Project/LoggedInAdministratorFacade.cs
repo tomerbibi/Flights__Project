@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class LoggedInAdministrator : AnonymousUserFacade, ILoggedInAdministrator
+    class LoggedInAdministratorFacade : AnonymousUserFacade, ILoggedInAdministrator
     {
         public void CreateAdmin(LoginToken<Administrator> token, Administrator admin)
         {
