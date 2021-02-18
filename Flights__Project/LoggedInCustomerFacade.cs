@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class LoggedInCustomerggedInCustomer : AnonymousUserFacade, ILoggedInCustomerFacade
+    class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedInCustomerFacade
     {
         public void CancelTicket(LoginToken<Customer> token, Ticket ticket)
         {
@@ -21,6 +21,8 @@ namespace Flights__Project
                     }
                 }); 
             }
+            else
+                Console.WriteLine("the ticket that you try to cancel belongs to another customer");
         }
 
         public List<Flight> GetAllMyFlights(LoginToken<Customer> token)
@@ -40,7 +42,7 @@ namespace Flights__Project
 
         public Ticket PurchaseTicket(LoginToken<Customer> token, Flight flight)
         {
-            Ticket t = new Ticket();
+            Ticket t = null;
             _ticketDAOPGSQL.GetAll().ForEach(ticket =>
             {
                 if(ticket.FlightID == flight.Id && ticket.CustimerID != 0)
@@ -50,6 +52,8 @@ namespace Flights__Project
                     _ticketDAOPGSQL.Update(t);
                 }
             });
+            if(t is null) 
+                Console.WriteLine("sorry we are out of tickets for this flight");
             return t;
         }
     }

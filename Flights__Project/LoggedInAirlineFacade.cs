@@ -10,6 +10,8 @@ namespace Flights__Project
         {
             if(token.User.Id == flight.AirlineCompanyID)
                 _flightDAOPGSQL.Remove(flight);
+            else
+                Console.WriteLine($"the flight that you try to cancel belongs to another airline");
         }
 
         public void ChangeMyPassword(LoginToken<AirlineCompany> token, string oldPassword, string newPassword)
@@ -21,17 +23,32 @@ namespace Flights__Project
                     u = _;
             });
 
-            if (u.Password == oldPassword)
+            int i = 0;
+            while(true)
             {
-                u.Password = newPassword;
-                _userDAOPGSQL.Update(u);
+                if (u.Password == oldPassword)
+                {
+                    u.Password = newPassword;
+                    _userDAOPGSQL.Update(u);
+                }
+
+                else
+                {
+                    if (i == 5)
+                        break;
+                    Console.WriteLine("the password that you entered does not match the old password please try again");
+                    i++;
+                }
             }
+
         }
 
         public void CreateFlight(LoginToken<AirlineCompany> token, Flight flight)
         {
             if (token.User.Id == flight.AirlineCompanyID)
                 _flightDAOPGSQL.Add(flight);
+            else
+                Console.WriteLine("the flight that you try to create belongs to another airline");
         }
 
         public List<Flight> GetAllFlights(LoginToken<AirlineCompany> token)
@@ -70,12 +87,16 @@ namespace Flights__Project
         {
             if(token.User.Id == airline.Id)
                 _airlineDAOPGSQL.Update(airline);
+            else
+                Console.WriteLine("the id of the token and the id of the modified airline does not match");
         }
 
         public void UpdateFlight(LoginToken<AirlineCompany> token, Flight flight)
         {
             if (token.User.Id == flight.AirlineCompanyID)
                 _flightDAOPGSQL.Update(flight);
+            else
+                Console.WriteLine("the flight that you try to modify belongs to another airline");
         }
     }
 }
