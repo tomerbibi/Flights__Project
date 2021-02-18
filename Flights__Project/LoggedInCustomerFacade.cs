@@ -47,7 +47,7 @@ namespace Flights__Project
             {
                 if(ticket.FlightID == flight.Id && ticket.CustimerID != 0)
                 {
-                    t = ticket;
+                    t = ticket; 
                     t.CustimerID = token.User.Id;
                     _ticketDAOPGSQL.Update(t);
                 } 
