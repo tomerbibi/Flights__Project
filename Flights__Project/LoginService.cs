@@ -10,7 +10,7 @@ namespace Flights__Project
         private ICustomerDAO _customerDAO;
         private IAdministratorDAO adminDAO;
 
-        public bool Login(string userName, string password, out LoginToken<IUser> token)
+        public bool Login(string userName, string password, out LoginToken<IUser> token, out FacadeBase facade)
         {
             // that function needs to return a Facade
 
@@ -19,7 +19,7 @@ namespace Flights__Project
             // the out is just a new LoginToken that i create in the out
 
             token = new LoginToken<IUser>();
-
+            facade = new FacadeBase();
             UserDAOPGSQL u = new UserDAOPGSQL();
             List<User> users = u.GetAll();
             for (int i = 0; i < users.Count; i++)
@@ -36,6 +36,7 @@ namespace Flights__Project
                             if(administrators[b].User_id == users[i].Id)
                                 token.User = administrators[b];
                         }
+                        facade = new LoggedInAdministratorFacade();
                         return true;
                     }
                     else if (users[i].UserRole == 2)
@@ -48,6 +49,7 @@ namespace Flights__Project
                             if (airlines[b].UserId == users[i].Id)
                                 token.User = airlines[b];
                         }
+                        facade = new LoggedInAirlineFacade();
                         return true;
                     }
                     else if (users[i].UserRole == 3)
@@ -59,6 +61,7 @@ namespace Flights__Project
                             if (customers[b].User_id == users[i].Id)
                                 token.User = customers[b];
                         }
+                        facade = new LoggedInCustomerFacade();
                         return true;
                     }
                 }
