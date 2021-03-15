@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class AirlineCompany : IPoco, IUser
+    public class AirlineCompany : IPoco, IUser
     {
         public AirlineCompany()
         {

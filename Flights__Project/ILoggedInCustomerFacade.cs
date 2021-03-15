@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface ILoggedInCustomerFacade
+    public interface ILoggedInCustomerFacade
     {
         List<Flight> GetAllMyFlights(LoginToken<Customer> token);
         Ticket PurchaseTicket(LoginToken<Customer> token, Flight flight);

@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class CountryDAOPGSQL : ICountryDAO
+    public class CountryDAOPGSQL : ICountryDAO
     {
         private static string connection_string;
         static CountryDAOPGSQL()
         {
             var reader = File.OpenText("ConnectionStringConfig.txt");
-            string connection_string = reader.ReadToEnd();
+            connection_string = reader.ReadToEnd();
         }
         private void ExecuteNonQuery(string procedure_string)
         {

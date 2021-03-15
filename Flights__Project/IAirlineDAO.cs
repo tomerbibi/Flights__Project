@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface IAirlineDAO : IBasicDB<AirlineCompany>
+    public interface IAirlineDAO : IBasicDB<AirlineCompany>
     {
         AirlineCompany GetAirlineByUserame(string name);
         List<AirlineCompany> GetAllAirlinesByCountry(int countryId);

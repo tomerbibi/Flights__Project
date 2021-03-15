@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface ICustomerDAO : IBasicDB<Customer>
+    public interface ICustomerDAO : IBasicDB<Customer>
     {
         Customer GetCustomerByUserame(string name);
     }

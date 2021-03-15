@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface IAnonymousUserFacade
+    public interface IAnonymousUserFacade
     {
         List<Flight> GetAllFlights();
         List<AirlineCompany> GetAllAirlineCompanies();

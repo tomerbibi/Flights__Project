@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class AdministratorDAOPGSQL : IAdministratorDAO
+    public class AdministratorDAOPGSQL : IAdministratorDAO
     {
         private static string connection_string;
         static AdministratorDAOPGSQL()
         {
             var reader = File.OpenText("ConnectionStringConfig.txt");
-            string connection_string = reader.ReadToEnd();
+            connection_string = reader.ReadToEnd();
         }
         private void ExecuteNonQuery(string procedure_string)
         {

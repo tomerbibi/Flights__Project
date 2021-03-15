@@ -4,12 +4,8 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class LoginService : ILoginService
+    public class LoginService : ILoginService
     {
-        private IAirlineDAO _arilineDAO;
-        private ICustomerDAO _customerDAO;
-        private IAdministratorDAO adminDAO;
-
         public bool Login(string userName, string password, out LoginToken<IUser> token, out FacadeBase facade)
         {
             // that function needs to return a Facade

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface IUserDAO : IBasicDB<User>
+    public interface IUserDAO : IBasicDB<User>
     {
     } 
 }

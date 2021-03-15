@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class FacadeBase
+    public class FacadeBase
     {
         protected AirlineDAOPGSQL _airlineDAOPGSQL = new AirlineDAOPGSQL();
         protected CountryDAOPGSQL _countryDAOPGSQL = new CountryDAOPGSQL();

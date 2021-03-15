@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface ITickedDAO : IBasicDB<Ticket>
+    public interface ITickedDAO : IBasicDB<Ticket>
     {
     }
 }

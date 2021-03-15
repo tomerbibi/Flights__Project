@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Flights__Project
 {
     [Serializable]
-    internal class WrongCredentialsException : Exception
+    public class WrongCredentialsException : Exception
     {
         public WrongCredentialsException()
         {

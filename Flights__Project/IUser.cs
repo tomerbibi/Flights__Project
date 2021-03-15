@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface IUser
+    public interface IUser
     {
     }
 }

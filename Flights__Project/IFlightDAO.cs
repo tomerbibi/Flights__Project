@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    interface IFlightDAO : IBasicDB<Flight>
+    public interface IFlightDAO : IBasicDB<Flight>
     {
         Dictionary<Flight, int> GetAllFlightsVacancy();
         Flight GetFlightById(int id);

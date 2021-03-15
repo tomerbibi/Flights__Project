@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flights__Project
 {
-    class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedInCustomerFacade
+    public class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedInCustomerFacade
     {
         public void CancelTicket(LoginToken<Customer> token, Ticket ticket)
         {
