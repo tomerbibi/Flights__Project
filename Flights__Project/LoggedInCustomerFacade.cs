@@ -42,19 +42,25 @@ namespace Flights__Project
 
         public Ticket PurchaseTicket(LoginToken<Customer> token, Flight flight)
         {
-            Ticket t = null;
-            _ticketDAOPGSQL.GetAll().ForEach(ticket =>
-            {
-                if(ticket.FlightID == flight.Id && ticket.CustimerID != 0)
-                {
-                    t = ticket; 
-                    t.CustimerID = token.User.Id;
-                    _ticketDAOPGSQL.Update(t);
-                } 
-            });
-            if(t is null) 
+            Ticket ticket = new Ticket();
+            /* _ticketDAOPGSQL.GetAll().ForEach(ticket =>
+             {
+                 if(ticket.FlightID == flight.Id && ticket.CustimerID == 0)
+                 {
+                     t = ticket; 
+                     t.CustimerID = token.User.Id;
+                     _ticketDAOPGSQL.Update(t);
+                 } 
+             });*/
+            ticket = _ticketDAOPGSQL.GetAll().Find(t => t.FlightID == flight.Id && t.CustimerID == 0);
+            if (ticket is null) 
                 Console.WriteLine("sorry we are out of tickets for this flight");
-            return t;
+            else
+            {
+                ticket.CustimerID = token.User.Id;
+                _ticketDAOPGSQL.Update(ticket);
+            }
+            return ticket;
         }
     }
 }

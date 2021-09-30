@@ -38,7 +38,7 @@ namespace Flights__Project
 
         public List<Flight> GetFlightsByLandingDate(DateTime landingDate)
         {
-            return GetFlightsByLandingDate(landingDate);
+            return _flightDAOPGSQL.GetFlightsByLandingDate(landingDate);
         }
 
         public List<Flight> GetFlightsByOriginCountry(int countryCode)

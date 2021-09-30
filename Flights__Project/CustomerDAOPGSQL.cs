@@ -26,7 +26,7 @@ namespace Flights__Project
         }
         public void Add(Customer c)
         {
-            ExecuteNonQuery($"call add_customer('{c.First_name}', '{c.Last_name}', {c.Adress}, " +
+            ExecuteNonQuery($"call add_customer('{c.First_name}', '{c.Last_name}', '{c.Adress}', " +
                 $"'{c.Phone}', '{c.Credit_card_no}', {c.User_id})");
         }
 

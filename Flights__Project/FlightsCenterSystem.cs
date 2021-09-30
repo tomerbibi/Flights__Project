@@ -15,10 +15,17 @@ namespace Flights__Project
         private LoginService loginService = new LoginService();
         private FlightsCenterSystem()
         {
+            AddToHistory();
+            //t.RunSynchronously();
+            //var result = Task.Run(() => Console.WriteLine());
+        }
+
+        public async void AddToHistory()
+        {
             FlightDAOPGSQL fl = new FlightDAOPGSQL();
             var reader = File.OpenText("ConnectionStringConfig.txt");
             string connection_string = reader.ReadToEnd();
-            Task t = new Task(() =>
+            await Task.Run(() =>
             {
                 using (var con = new NpgsqlConnection(connection_string))
                 {
@@ -41,9 +48,7 @@ namespace Flights__Project
                     }
                 }
             });
-            t.RunSynchronously();
         }
-
         public static FlightsCenterSystem GetInstance()
         {
             if (_instance == null)
@@ -59,9 +64,9 @@ namespace Flights__Project
             return _instance;
         }
 
-        public void login(string userName, string password, out LoginToken<IUser> token, out FacadeBase facade)
+        public void login(string userName, string password, out LoginToken<object> token, out FacadeBase facade)
         {
-            loginService.Login(userName, password, out LoginToken<IUser> l, out FacadeBase f);
+            loginService.Login(userName, password, out LoginToken<object> l, out FacadeBase f);
             token = l;
             facade = f;
         }

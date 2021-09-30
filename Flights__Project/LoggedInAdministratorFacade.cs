@@ -35,6 +35,10 @@ namespace Flights__Project
         {
             return _customerDAOPGSQL.GetAll();
         }
+        public List<AirlineAuth> GetRequests(LoginToken<Administrator> token)
+        {
+            return new AirlineAuthDAOPGSQL().GetAll();
+        }
 
         public void RemoveAdmin(LoginToken<Administrator> token, Administrator admin)
         {

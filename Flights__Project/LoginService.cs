@@ -6,15 +6,9 @@ namespace Flights__Project
 {
     public class LoginService : ILoginService
     {
-        public bool Login(string userName, string password, out LoginToken<IUser> token, out FacadeBase facade)
+        public bool Login(string userName, string password, out LoginToken<object> token, out FacadeBase facade)
         {
-            // that function needs to return a Facade
-
-            // in program its gonna be like that:
-            // Facade c = LoginService.Login(someName, somePassword, out LoginToken l) // the login token in
-            // the out is just a new LoginToken that i create in the out
-
-            token = new LoginToken<IUser>();
+            token = new LoginToken<object>();
             facade = new FacadeBase();
             UserDAOPGSQL u = new UserDAOPGSQL();
             List<User> users = u.GetAll();

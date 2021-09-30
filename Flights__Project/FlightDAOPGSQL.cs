@@ -106,7 +106,6 @@ namespace Flights__Project
 
 
 
-        // you said that we need to make a GetFlightById function but the normal get is already by id... 
         public Flight GetFlightById(int id)
         {
             throw new NotImplementedException();
@@ -157,7 +156,7 @@ namespace Flights__Project
             using (NpgsqlConnection con = new NpgsqlConnection(connection_string))
             {
                 con.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand($"select * from get_flights_by_departure_date({departureDate})", con);
+                NpgsqlCommand cmd = new NpgsqlCommand($"select * from get_flights_by_departure_date('{departureDate}')", con);
                 cmd.CommandType = System.Data.CommandType.Text;
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -169,14 +168,14 @@ namespace Flights__Project
             }
             return flights;
         }
-
+        // $"select * from get_flights_by_landing_date('{landingDate}')"
         public List<Flight> GetFlightsByLandingDate(DateTime landingDate)
         {
             List<Flight> flights = new List<Flight>();
             using (NpgsqlConnection con = new NpgsqlConnection(connection_string))
             {
                 con.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand($"select * from get_flights_by_landing_date({landingDate})", con);
+                NpgsqlCommand cmd = new NpgsqlCommand($"select * from get_flights_by_landing_date('{landingDate}')", con);
                 cmd.CommandType = System.Data.CommandType.Text;
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())

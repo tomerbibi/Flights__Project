@@ -7,7 +7,7 @@ namespace Flights__Project
     public interface ILoggedInAirlineFacade
     {
         List<Ticket> GetAllTickets(LoginToken<AirlineCompany> token);
-        List<Flight> GetAllFlights(LoginToken<AirlineCompany> token);
+        List<Flight> GetAllCompanyFlights(LoginToken<AirlineCompany> token);
         void CancelFlight(LoginToken<AirlineCompany> token, Flight flight);
         void CreateFlight(LoginToken<AirlineCompany> token, Flight flight);
         void UpdateFlight(LoginToken<AirlineCompany> token, Flight flight);

@@ -6,6 +6,6 @@ namespace Flights__Project
 {
     public interface ILoginService
     {
-        bool Login(string userName, string password, out LoginToken<IUser> token, out FacadeBase facade);
+        bool Login(string userName, string password, out LoginToken<object> token, out FacadeBase facade);
     }
 }

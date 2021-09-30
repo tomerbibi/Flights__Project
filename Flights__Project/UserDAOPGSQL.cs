@@ -11,11 +11,16 @@ namespace Flights__Project
         private static string connection_string;
         static UserDAOPGSQL()
         {
-            var reader = File.OpenText("ConnectionStringConfig.txt");
-            connection_string = reader.ReadToEnd();
+            connection_string = File.ReadAllLines("ConnectionStringConfig.txt")[0];
+            //var reader = File.OpenText("ConnectionStringConfig.txt");
+            //connection_string = reader.ReadToEnd();
         }
         private void ExecuteNonQuery(string procedure_string)
         {
+            if (connection_string == "Host=localhost;Username=postgres;Password=admin;Database=flights_project")
+            {
+                Console.WriteLine();
+            }
             using (var con = new NpgsqlConnection(connection_string))
             {
                 con.Open();
@@ -26,7 +31,7 @@ namespace Flights__Project
         }
         public void Add(User u)
         {
-            ExecuteNonQuery($"call add_user('{u.Username}', '{u.Password}', {u.Email}, {u.UserRole})");
+            ExecuteNonQuery($"call add_user('{u.Username}', '{u.Password}', '{u.Email}', {u.UserRole})");
         }
 
         public User Get(long id)
@@ -53,7 +58,8 @@ namespace Flights__Project
         public List<User> GetAll()
         {
             List<User> users = new List<User>();
-            using (NpgsqlConnection con = new NpgsqlConnection(connection_string))
+            //using (NpgsqlConnection con = new NpgsqlConnection(connection_string))
+            using (NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=admin;Database=flights_project"))
             {
                 con.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand("select * from get_all_users()", con);

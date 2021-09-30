@@ -10,6 +10,7 @@ namespace Flights__Project
         {
             if(token.User.Id == flight.AirlineCompanyID)
                 _flightDAOPGSQL.Remove(flight);
+
             else
                 Console.WriteLine($"the flight that you try to cancel belongs to another airline");
         }
@@ -47,11 +48,12 @@ namespace Flights__Project
         {
             if (token.User.Id == flight.AirlineCompanyID)
                 _flightDAOPGSQL.Add(flight);
+
             else
                 Console.WriteLine("the flight that you try to create belongs to another airline");
         }
 
-        public List<Flight> GetAllFlights(LoginToken<AirlineCompany> token)
+        public List<Flight> GetAllCompanyFlights(LoginToken<AirlineCompany> token)
         {
             List<Flight> f = new List<Flight>();
             _flightDAOPGSQL.GetAll().ForEach(flight =>
