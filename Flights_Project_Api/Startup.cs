@@ -28,6 +28,8 @@ namespace Flights_Project_Api
       
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
             services.AddCors(c => // maybe remove that
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
