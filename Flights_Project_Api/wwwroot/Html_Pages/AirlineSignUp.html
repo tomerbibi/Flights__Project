@@ -1,22 +1,21 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+	<title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <hr>
-    <form method="POST" action="https://localhost:44335/Page/CreateAirline">
+	<form method="POST" action="https://localhost:44335/Page/CreateAirline">
         <p>Name<input type="text" id="nameid" name="nametxt" required></p>
-        <p>
-            <select name="countrytxt" id="countryid">
-            </select>
-        </p>
-        <p>UserName<input type="text" id="usernameid" name="usernametxt" required></p>
-        <p>Password<input type="password" id="passwordid" name="passwordtxt" required></p>
-        <p>Email<input type="email" id="emailid" name="emailtxt" required></p>
-        <button type="submit">SEND</button>
-    </form>
+		<p>
+			<select name="countrytxt" id="countryid">
+			</select>
+		</p>
+	    <p>UserName<input type="text" id="usernameid" name="usernametxt" required></p>
+	    <p>Password<input type="password" id="passwordid" name="passwordtxt" required></p>
+	    <p>Email<input type="email" id="emailid" name="emailtxt" required></p>
+		<button type="submit">SEND</button>
+	</form>
 </body>
 <script>
     $(function()

@@ -84,6 +84,7 @@ namespace Flights_Project_Api.Controllers
                 claims.Add(new Claim("roletype", "airlinecompany"));
                 claims.Add(new Claim("idd", $"{airline.Id}"));
                 claims.Add(new Claim("name", $"{airline.Name}"));
+                claims.Add(new Claim("userId", $"{airline.UserId}"));
             }
             if (customer.Id != 0)
             {

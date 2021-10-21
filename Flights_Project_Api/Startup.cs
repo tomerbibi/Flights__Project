@@ -108,7 +108,7 @@ namespace Flights_Project_Api
                 c.DocumentTitle = "Flights Managment System API";
             });
 
-
+            app.UseStaticFiles();
 
             if (env.IsDevelopment())
             {

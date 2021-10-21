@@ -47,7 +47,7 @@ namespace Flights_Project_Api.Controllers
             User u = new UserDAOPGSQL().GetAll().FirstOrDefault(_ => _.Password == token_airline.Password && _.Username == token_airline.Name);
             token_airline.User = new AirlineDAOPGSQL().GetAll().FirstOrDefault(_ => _.UserId == u.Id);
             await Task.Run(() => new UserDAOPGSQL().Update(new User(u.Id, details.Username, details.Password, details.Email, 2)));
-            await Task.Run(() => new AirlineDAOPGSQL().Update(new AirlineCompany(details.Name, details.CountryId, details.UserId)));
+            await Task.Run(() => new AirlineDAOPGSQL().Update(new AirlineCompany(token_airline.User.Id, details.Name, details.CountryId, details.UserId)));
             return StatusCode(200, details);
         }
 
